@@ -1,0 +1,136 @@
+#slider{/*положение слайдера*/
+    position: relative;
+    text-align: center;
+    top: 10px;
+}
+
+#slider{/*центровка слайдера*/
+    margin: 0 auto;
+}
+
+#slides article{ /*все изображения справа друг от друга*/
+    width: 20%;
+    float: left;
+}
+
+#slider .image{ /*уст. общ. размер блока и изобр.*/
+    width: 500%;
+    line-height: 0;
+}
+
+article img{ /*размер изобр. слайдера*/
+    width: 30%;
+}
+
+#desktop:checked ~ #slider{/*размер всего слайдера*/
+    max-width: 960px; /* максимальная длинна*/
+}
+
+/*настройка переключения и положения для левой стрелки*/
+/*если свич1-5 активны, то будет обращение к лейблу из блока с id контролс*/
+#swich1:checked ~ #controls label:nth-child(5),
+#swich2:checked ~ #controls label:nth-child(1),
+#swich3:checked ~ #controls label:nth-child(2),
+#swich4:checked ~ #controls label:nth-child(3),
+#swich5:checked ~ #controls label:nth-child(4){
+    background: url(caret-left.svg) no-repeat; /*залифка фона картинкой без повторений*/
+    float: left;
+    margin: 0 0 0 -84px; /* сдвиг влево*/
+    display: block;
+    height: 68px;
+    width: 68px;
+
+}
+
+#swich1:checked ~ #controls label:nth-child(2),
+#swich2:checked ~ #controls label:nth-child(3),
+#swich3:checked ~ #controls label:nth-child(4),
+#swich4:checked ~ #controls label:nth-child(5),
+#swich5:checked ~ #controls label:nth-child(1){
+    background: url(img/caret-right.svg) no-repeat; /*залифка фона картинкой без повторений*/
+    float: right;
+    margin: 0 -84px 0 0; /* сдвиг вправо*/
+    display: block;
+    height: 68px;
+    width: 68px;
+
+}
+
+main input{
+    display: none;
+}
+
+label, a{
+    cursor: pointer;
+}
+
+/* позиция изображения при активации переключателя*/
+#switch1:checked ~ #slides .image{
+    margin-left: 0;
+}
+
+#switch2:checked ~ #slides .image{
+    margin-left: -100%;
+}
+
+#switch3:checked ~ #slides .image{
+    margin-left: -200%;
+}
+
+#switch4:checked ~ #slides .image{
+    margin-left: -300%;
+}
+
+#switch5:checked ~ #slides .image{
+    margin-left: -400%;
+}
+
+#controls{ /* положение блока всех упр. эл. */
+    margin: -25px;
+    width: 100%;
+    height: 50px;
+}
+
+#active label{ /*стиль отдельного переключателя*/
+	border-radius: 10px; /*скругление углов*/
+	display: inline-block; /*расположение в строку*/
+	width: 15px;
+	height: 15px;
+	background: #bbb;
+}
+
+#active{ /*расположение блока с переключателями*/
+	margin: 23% 0 0;
+	text-align: center;
+}
+
+#active label:hover{ /*поведение чекбокса при наведении*/
+	background: #76c8ff;
+	border-color: #777 !important; /*выполнение в любом случае*/
+}
+
+/*цвет активного лейбла при активации чекбокса*/
+#switch1:checked ~ #active label:nth-child(1),
+#switch2:checked ~ #active label:nth-child(2),
+#switch3:checked ~ #active label:nth-child(3),
+#switch4:checked ~ #active label:nth-child(4),
+#switch5:checked ~ #active label:nth-child(5){
+	background: #18a3dd;
+	border-color: #18a3dd !important;
+}
+
+#slides .image{ /*анимация пролистывания изображений*/
+	transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+}
+
+#controls label:hover{ /*прозрачность стрелок при наведении*/
+	opacity: 0.6;
+}
+
+#controls label{ /*прозрачность стрелок при отводе курсора*/
+	transition: opacity 0.2s ease-out;
+}
+
+
+
+
